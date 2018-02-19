@@ -1,0 +1,33 @@
+﻿@model AspNetCoreBooleanInputs.Models.BooleanInputsViewModel
+
+<h2>
+  @nameof(this.Model.IsImportant) = @this.Model.IsImportant.ToString()
+  <br />
+  @nameof(this.Model.IsActive) = @this.Model.IsActive.ToString()
+</h2>
+
+<form class="form-horizontal" method="post">
+  <div class="col-md-12">
+    <input asp-for="IsImportant" />
+    <label asp-for="IsImportant">
+    </label>
+
+    <input asp-for="IsActive" />
+    <label asp-for="IsActive">
+    </label>
+  </div>
+
+  <div class="col-md-12">
+    <ul>
+      @foreach(string message in this.Model.Messages)
+      {
+        <li>@message</li>
+      }
+    </ul>
+  </div>
+
+  <div class="col-md-12">
+    <button type="submit">Submit</button>
+  </div>
+
+</form>
