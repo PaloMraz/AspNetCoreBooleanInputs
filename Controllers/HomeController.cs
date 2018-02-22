@@ -24,9 +24,16 @@ namespace AspNetCoreBooleanInputs.Controllers
     {
       model.Messages.Add($"POST values: {nameof(model.IsImportant)} = {model.IsImportant}, {nameof(model.IsActive)} = {model.IsActive}");
 
-      model.IsActive = !model.IsActive;
-      model.IsImportant = !model.IsImportant;
-      
+      // This does NOT work:
+      //model.IsActive = !model.IsActive;
+      //model.IsImportant = !model.IsImportant;
+      //model.Text += "*";
+
+      // This works:
+      this.ModelState[nameof(model.Text)].RawValue += "*";
+      this.ModelState[nameof(model.IsActive)].RawValue = !model.IsActive;
+      this.ModelState[nameof(model.IsImportant)].RawValue = !model.IsImportant;
+
       model.Messages.Add($"Negated POST values: {nameof(model.IsImportant)} = {model.IsImportant}, {nameof(model.IsActive)} = {model.IsActive}");
       return this.View(model);
     }

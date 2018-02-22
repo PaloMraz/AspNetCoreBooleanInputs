@@ -11,6 +11,8 @@ namespace AspNetCoreBooleanInputs.Models
 
     public bool IsActive { get; set; }
 
+    public string Text { get; set; }
+
     public List<string> Messages { get; } = new List<string>();
   }
 }
